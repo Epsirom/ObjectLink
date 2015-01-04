@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>QtAppClass</class>
+ <widget class="QWidget" name="QtAppClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1152</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1024</width>
+    <height>768</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>QtApp</string>
+  </property>
+  <widget class="QPushButton" name="OpenFile">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>80</y>
+     <width>112</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>添加物体</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>20</y>
+     <width>983</width>
+     <height>82</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout" rowstretch="2,0">
+    <property name="sizeConstraint">
+     <enum>QLayout::SetFixedSize</enum>
+    </property>
+    <item row="0" column="0">
+     <widget class="QSlider" name="horizontalSlider">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>1</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1,2,2,1,1,3,2,2,2,0,3,3">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="sizeConstraint">
+       <enum>QLayout::SetDefaultConstraint</enum>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="pushButton_3">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>&lt;&lt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_4">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>&lt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="spinBox_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>1000000</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>/1(关键帧)</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_5">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_6">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>&gt;&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>总帧数</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="spinBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximum">
+         <number>1000000</number>
+        </property>
+        <property name="value">
+         <number>1</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_9">
+        <property name="text">
+         <string>设定总帧数</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_7">
+        <property name="text">
+         <string>保存关键帧</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_8">
+        <property name="text">
+         <string>删除关键帧</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>130</y>
+     <width>112</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>清除物体</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>180</y>
+     <width>112</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>选择纹理</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="OpenFile_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>30</y>
+     <width>112</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>选择背景</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="createVideoBtn">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>230</y>
+     <width>112</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>生成视频</string>
+   </property>
+  </widget>
+  <widget class="QProgressBar" name="progressBar">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>280</y>
+     <width>132</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="value">
+    <number>0</number>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="qtapp.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>OpenFile</sender>
+   <signal>clicked()</signal>
+   <receiver>QtAppClass</receiver>
+   <slot>OpenFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>61</x>
+     <y>87</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>224</x>
+     <y>27</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>QtAppClass</receiver>
+   <slot>ClearObject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>101</x>
+     <y>138</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>223</x>
+     <y>90</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>QtAppClass</receiver>
+   <slot>loadTextures()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>104</x>
+     <y>213</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>208</x>
+     <y>459</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>OpenFile_2</sender>
+   <signal>clicked()</signal>
+   <receiver>QtAppClass</receiver>
+   <slot>chooseBG()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>92</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>155</x>
+     <y>45</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>QtAppClass</receiver>
+   <slot>showFrame(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>777</x>
+     <y>38</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>768</x>
+     <y>151</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox_2</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>QtAppClass</receiver>
+   <slot>showFrame(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>286</x>
+     <y>71</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>206</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_4</sender>
+   <signal>clicked()</signal>
+   <receiver>QtAppClass</receiver>
+   <slot>prevFrame()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>234</x>
+     <y>71</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>231</x>
+     <y>185</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>QtAppClass</receiver>
+   <slot>prevKeyframe()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>173</x>
+     <y>70</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>175</x>
+     <y>127</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_5</sender>
+   <signal>clicked()</signal>
+   <receiver>QtAppClass</receiver>
+   <slot>nextFrame()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>436</x>
+     <y>65</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>434</x>
+     <y>150</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_6</sender>
+   <signal>clicked()</signal>
+   <receiver>QtAppClass</receiver>
+   <slot>nextKeyframe()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>499</x>
+     <y>75</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>511</x>
+     <y>152</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_7</sender>
+   <signal>clicked()</signal>
+   <receiver>QtAppClass</receiver>
+   <slot>saveKeyframe()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>869</x>
+     <y>83</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>858</x>
+     <y>174</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_8</sender>
+   <signal>clicked()</signal>
+   <receiver>QtAppClass</receiver>
+   <slot>delKeyframe()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1140</x>
+     <y>99</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>958</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_9</sender>
+   <signal>clicked()</signal>
+   <receiver>QtAppClass</receiver>
+   <slot>changeTotalFrames()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>715</x>
+     <y>69</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>713</x>
+     <y>108</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>createVideoBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>QtAppClass</receiver>
+   <slot>createVideo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>75</x>
+     <y>246</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>575</x>
+     <y>383</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>OpenFile()</slot>
+  <slot>ClearObject()</slot>
+  <slot>OrthographicProjection()</slot>
+  <slot>PerspectiveProjection()</slot>
+  <slot>nRangeChanged(int)</slot>
+  <slot>loadTextures()</slot>
+  <slot>lightHeightChanged(int)</slot>
+  <slot>chooseBG()</slot>
+  <slot>changeTotalFrames()</slot>
+  <slot>showFrame(int)</slot>
+  <slot>nextFrame()</slot>
+  <slot>prevFrame()</slot>
+  <slot>nextKeyframe()</slot>
+  <slot>prevKeyframe()</slot>
+  <slot>saveKeyframe()</slot>
+  <slot>delKeyframe()</slot>
+  <slot>createVideo()</slot>
+ </slots>
+</ui>
