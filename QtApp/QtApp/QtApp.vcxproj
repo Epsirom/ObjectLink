@@ -129,6 +129,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="base.h" />
     <ClInclude Include="GeneratedFiles\ui_qtapp.h" />
     <ClInclude Include="LightDetect.h" />
     <ClInclude Include="Object3D.h" />

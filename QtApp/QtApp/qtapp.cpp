@@ -2,8 +2,10 @@
 
 #include "Object3D.h"
 
+#include "base.h"
+
 #if _MSC_VER >= 1600  
-	#pragma execution_character_set("utf-8")
+	//#pragma execution_character_set("utf-8")
 #endif  
 
 QtApp::QtApp(QWidget *parent) : QWidget(parent)
@@ -20,7 +22,7 @@ QtApp::QtApp(QWidget *parent) : QWidget(parent)
 	frame.frame = 1;
 	keyframes.push_back(frame);
 
-	setWindowTitle("网络模型的真实感显示");
+	setWindowTitle(CN("网络模型的真实感显示"));
 }
 
 QtApp::~QtApp()
@@ -32,17 +34,17 @@ void QtApp::changeTotalFrames()
 {
 	int count = ui.spinBox->value();
 	if (keyframes[keyframes.size() - 1].frame > count){
-		QMessageBox::information(NULL, "错误", "存在越界的关键帧");
+		QMessageBox::information(NULL, CN("错误"), CN("存在越界的关键帧"));
 		ui.spinBox->setValue(keyframes[keyframes.size() - 1].frame);
 	}
 	else{
 		ui.horizontalSlider->setMaximum(count);
-		QString str="";
+		QString str=CN("");
 		if (isKeyframe(ui.spinBox_2->value()))
-			str.append("关键帧");
+			str.append(CN("关键帧"));
 		else 
-			str.append("普通帧");
-		ui.label->setText(QString("/%1(%2)").arg(count).arg(str));
+			str.append(CN("普通帧"));
+		ui.label->setText(CN("/%1(%2)").arg(count).arg(str));
 	}
 }
 
@@ -69,7 +71,7 @@ void QtApp::prevKeyframe()
 	{
 		if (keyframes[i].frame >= ui.spinBox_2->value()){
 			if (i>0) showFrame(keyframes[i - 1].frame);
-			else QMessageBox::information(NULL, "错误", "关键帧不存在");
+			else QMessageBox::information(NULL, CN("错误"), CN("关键帧不存在"));
 			return;
 		}
 	}
@@ -82,11 +84,11 @@ void QtApp::nextKeyframe()
 	{
 		if (keyframes[i].frame > ui.spinBox_2->value()){
 			if (i<keyframes.size()) showFrame(keyframes[i].frame);
-			else QMessageBox::information(NULL, "错误", "关键帧不存在");
+			else QMessageBox::information(NULL, CN("错误"), CN("关键帧不存在"));
 			return;
 		}
 	}
-	QMessageBox::information(NULL, "错误", "关键帧不存在");
+	QMessageBox::information(NULL, CN("错误"), CN("关键帧不存在"));
 }
 
 void QtApp::saveKeyframe()
@@ -107,21 +109,21 @@ void QtApp::saveKeyframe()
 	for (iter = keyframes.begin(); iter != keyframes.end();) {
 		if (iter->frame == n){
 			*iter = frame;
-			QMessageBox::information(NULL, "success", "保存关键帧成功");
-			ui.label->setText(QString("/%1(%2)").arg(ui.spinBox->value()).arg("关键帧"));
+			QMessageBox::information(NULL, CN("success"), CN("保存关键帧成功"));
+			ui.label->setText(CN("/%1(%2)").arg(ui.spinBox->value()).arg(CN("关键帧")));
 			return;
 		}else if (iter->frame > n){
 			keyframes.insert(iter, frame);
-			QMessageBox::information(NULL, "success", "保存关键帧成功");
-			ui.label->setText(QString("/%1(%2)").arg(ui.spinBox->value()).arg("关键帧"));
+			QMessageBox::information(NULL, CN("success"), CN("保存关键帧成功"));
+			ui.label->setText(CN("/%1(%2)").arg(ui.spinBox->value()).arg(CN("关键帧")));
 			return;
 		}
 		else
 			iter++;
 	}
 	keyframes.push_back(frame);
-	QMessageBox::information(NULL, "success", "保存关键帧成功");
-	ui.label->setText(QString("/%1(%2)").arg(ui.spinBox->value()).arg("关键帧"));
+	QMessageBox::information(NULL, CN("success"), CN("保存关键帧成功"));
+	ui.label->setText(CN("/%1(%2)").arg(ui.spinBox->value()).arg(CN("关键帧")));
 }
 
 void QtApp::delKeyframe()
@@ -131,14 +133,14 @@ void QtApp::delKeyframe()
 	for (iter = keyframes.begin()+1; iter != keyframes.end();) {
 		if (iter->frame == n){
 			keyframes.erase(iter);
-			QMessageBox::information(NULL, "success", "删除关键帧成功");
-			ui.label->setText(QString("/%1(%2)").arg(ui.spinBox->value()).arg("普通帧"));
+			QMessageBox::information(NULL, CN("success"), CN("删除关键帧成功"));
+			ui.label->setText(CN("/%1(%2)").arg(ui.spinBox->value()).arg(CN("普通帧")));
 			return;
 		}
 		else
 			iter++;
 	}
-	QMessageBox::information(NULL, "错误", "删除关键帧失败");
+	QMessageBox::information(NULL, CN("错误"), CN("删除关键帧失败"));
 }
 
 void QtApp::createVideo()
@@ -185,16 +187,16 @@ void QtApp::createVideo()
 void QtApp::showFrame(int n)
 {
 	if (n > ui.spinBox->value())
-		QMessageBox::information(NULL, "错误", "超过最大帧数");
+		QMessageBox::information(NULL, CN("错误"), CN("超过最大帧数"));
 	else if (n < 1)
-		QMessageBox::information(NULL, "错误", "显示帧数需大于0");
+		QMessageBox::information(NULL, CN("错误"), CN("显示帧数需大于0"));
 	else{
 		ui.horizontalSlider->setValue(n);
 		ui.spinBox_2->setValue(n);
 		QString str = "";
-		if (isKeyframe(n)) str.append("关键帧");
-		else str.append("普通帧");
-		ui.label->setText(QString("/%1(%2)").arg(ui.spinBox->value()).arg(str));
+		if (isKeyframe(n)) str.append(CN("关键帧"));
+		else str.append(CN("普通帧"));
+		ui.label->setText(CN("/%1(%2)").arg(ui.spinBox->value()).arg(str));
 		if (isKeyframe(n)){
 			for (int i = 0; i < keyframes.size(); i++)
 			{
@@ -301,11 +303,11 @@ void QtApp::mousePressEvent(QMouseEvent *event)
 void QtApp::OpenFile()
 {
 	QString fileName = QFileDialog::getOpenFileName(this,
-		"打开OBJ文件", QDir::currentPath(), "Object(*.obj *.OBJ)");
+		CN("打开OBJ文件"), QDir::currentPath(), CN("Object(*.obj *.OBJ)"));
 
 	QFile file(fileName);
 	if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-		QMessageBox::information(NULL, "错误", "读取OBJ文件失败");
+		QMessageBox::information(NULL, CN("错误"), CN("读取OBJ文件失败"));
 		return;
 	}
 
@@ -352,7 +354,7 @@ void QtApp::PerspectiveProjection()
 void QtApp::loadTextures()
 {
 	QString fileName = QFileDialog::getOpenFileName(this,
-		"打开纹理图片", QDir::currentPath(), "picture(*.jpg *.png *.bmp)");
+		CN("打开纹理图片"), QDir::currentPath(), CN("picture(*.jpg *.png *.bmp)"));
 	glWidget->loadTextures(fileName);
 }
 
@@ -369,7 +371,7 @@ void QtApp::lightHeightChanged(int height)
 void QtApp::chooseBG()
 {
 	QString fileName = QFileDialog::getOpenFileName(this,
-		"打开背景文件", QDir::currentPath(), "picture(*.jpg *.png *.bmp)");
+		CN("打开背景文件"), QDir::currentPath(), CN("picture(*.jpg *.png *.bmp)"));
 
 	glWidget->setBG(fileName);
 }
