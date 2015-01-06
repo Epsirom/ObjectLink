@@ -11,7 +11,7 @@ public:
 
 	double pointSimilarity(const cv::Vec3b& p1, const cv::Vec3b& p2);
 	void splitCon();
-	cv::Vec2b getLightDirection();
+	cv::Vec2s getLightDirection();
 
 protected:
 	cv::Mat img;

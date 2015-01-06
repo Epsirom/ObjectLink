@@ -42,6 +42,8 @@ private:
 	GLfloat lightHeight;
 	QImage img;
 
+	GLdouble viewWidth, viewHeight;
+
 	GLfloat lightPosition[4];
 
 	QPoint lastPos;

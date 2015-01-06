@@ -132,17 +132,17 @@ void LightDetect::splitCon()
 	}
 }
 
-cv::Vec2b LightDetect::getLightDirection()
+cv::Vec2s LightDetect::getLightDirection()
 {
-	static cv::Vec2b dirs[8] = {
-		cv::Vec2b(1, 0),
-		cv::Vec2b(1, 1),
-		cv::Vec2b(0, 1),
-		cv::Vec2b(-1, 1),
-		cv::Vec2b(-1, 0),
-		cv::Vec2b(-1, -1),
-		cv::Vec2b(0, -1),
-		cv::Vec2b(1, -1)
+	static cv::Vec2s dirs[8] = {
+		cv::Vec2s(1, 0),
+		cv::Vec2s(1, 1),
+		cv::Vec2s(0, 1),
+		cv::Vec2s(-1, 1),
+		cv::Vec2s(-1, 0),
+		cv::Vec2s(-1, -1),
+		cv::Vec2s(0, -1),
+		cv::Vec2s(1, -1)
 	};
 	static double ratios[8] = {
 		1,
@@ -200,6 +200,7 @@ cv::Vec2b LightDetect::getLightDirection()
 			m = i;
 		}
 	}
-	cv::Vec2b result(-dirs[m][0], -dirs[m][1]);
+	return dirs[m];
+	cv::Vec2s result(-dirs[m][0], -dirs[m][1]);
 	return result;
 }
