@@ -124,6 +124,7 @@ void GLWidget::initializeGL()
 	glShadeModel(GL_FLAT);								//设置阴影平滑模式
 	glClearColor(0,0,0,0);								//改变窗口的背景颜色
 	glClearDepth(10);									//设置深度缓存
+	glClearStencil(0);
 	glEnable(GL_DEPTH_TEST);							//允许深度测试
 	glDepthFunc(GL_LEQUAL);								//设置深度测试类型
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);	//进行透视校正
@@ -134,6 +135,7 @@ void GLWidget::initializeGL()
 	glEnable(GL_MULTISAMPLE);
 
 	glEnable(GL_RESCALE_NORMAL);
+
 
 	loadTextures("");
 
@@ -159,7 +161,7 @@ void GLWidget::initializeGL()
 	GLfloat shine[] = {5.0};
 	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, matAmbient);
 	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, matDiffuse);
-	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, matAmbDif);  // 将背景颜色和散射颜色设置成同一颜色
+	//glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, matAmbDif);  // 将背景颜色和散射颜色设置成同一颜色
 	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, matSpecular);
 	glMaterialfv(GL_FRONT, GL_SHININESS, shine);
 
@@ -289,7 +291,7 @@ void GLWidget::paintGL()
 {
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 	glLoadIdentity();
 
 	static GLfloat floorVertices[4][3] = {
@@ -400,6 +402,11 @@ void GLWidget::paintGL()
 	glGetDoublev(GL_MODELVIEW_MATRIX, model_view);
 
 	glLoadIdentity();
+
+	
+	//glDisable(GL_DEPTH_TEST);
+	//glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
+
 	glBindTexture(GL_TEXTURE_2D, texture[0]);
 
 	//glPushAttrib(GL_LIGHTING_BIT);
@@ -419,6 +426,18 @@ void GLWidget::paintGL()
     //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     //glDisable(GL_LIGHTING);  /* Force the 50% black. */
     //glColor4f(0.0, 0.0, 0.0, 0.5);
+	
+    //glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+    //glEnable(GL_DEPTH_TEST);
+
+	//glStencilFunc(GL_EQUAL, 1, 0xffffffff);
+	//glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
+	
+	glEnable(GL_STENCIL_TEST);
+    //glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+    glStencilFunc(GL_GREATER, 3, 0xffffffff);
+    //glStencilFunc(GL_LESS, 2, 0xffffffff); 
+    glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 
     glPushMatrix();
     /* Project the shadow. */
@@ -461,12 +480,23 @@ void GLWidget::paintGL()
 	findPlane(floorPlane, floorVertices[1], floorVertices[2], floorVertices[3]);
 	shadowMatrix(floorShadow, floorPlane, lightPosition);
     glMultMatrixf((GLfloat *) floorShadow);
+	
 
-	glColor3f(0.0, 0.0, 0.0);
+	glEnable(GL_BLEND); //Enable blending.
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); //Set blending function.
+
+	glColor4f(0.0, 0.0, 0.0, 0.2);
     for (int i = 0; i < objectList.size(); i++) {
 		objectList[i].render(model_view);//model_view, projection, viewport);
 	}
+
+	glDisable(GL_BLEND);
+
 	glEnable(GL_LIGHTING);
+
+	glDisable(GL_STENCIL_TEST);
+
+
     glPopMatrix();
 
     //glDisable(GL_BLEND);
