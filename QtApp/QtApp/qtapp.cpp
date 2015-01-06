@@ -22,7 +22,7 @@ QtApp::QtApp(QWidget *parent) : QWidget(parent)
 	frame.frame = 1;
 	keyframes.push_back(frame);
 
-	setWindowTitle(CN("网络模型的真实感显示"));
+	setWindowTitle(CN("基于关键帧的图像场景动画"));
 }
 
 QtApp::~QtApp()
