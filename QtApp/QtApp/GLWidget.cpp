@@ -485,7 +485,7 @@ void GLWidget::paintGL()
 	glEnable(GL_BLEND); //Enable blending.
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); //Set blending function.
 
-	glColor4f(0.0, 0.0, 0.0, 0.2);
+	glColor4f(0.0, 0.0, 0.0, 0.3);
     for (int i = 0; i < objectList.size(); i++) {
 		objectList[i].render(model_view);//model_view, projection, viewport);
 	}

@@ -200,7 +200,7 @@ cv::Vec2s LightDetect::getLightDirection()
 			m = i;
 		}
 	}
-	return dirs[m];
+	//return dirs[m];
 	cv::Vec2s result(-dirs[m][0], -dirs[m][1]);
 	return result;
 }
